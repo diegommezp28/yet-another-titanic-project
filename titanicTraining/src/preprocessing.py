@@ -132,8 +132,12 @@ class FeatureEnricher:
         data["Cabin_Letter"] = data["Cabin"].apply(lambda x: str(x)[0])
         data["Cabin_num"] = pd.qcut(self.cabin_num_1, 3)
 
+        # All this extra steps for the concat is to basically to not brake the inplace nature of this function
         temp = pd.concat(
-            (data, pd.get_dummies(data["Cabin_num"], prefix="Cabin_num")), axis=1, copy=False, ignore_index=False
+            (data, pd.get_dummies(data["Cabin_num"], prefix="Cabin_num")),
+            axis=1,
+            copy=False,
+            ignore_index=False,
         )
         data.drop(data.index[0:], inplace=True)
         data[temp.columns] = temp
