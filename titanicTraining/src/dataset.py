@@ -1,5 +1,4 @@
 from __future__ import annotations
-from abc import classmethod
 import pandas as pd
 import os
 import shutil
@@ -24,11 +23,15 @@ class TitanicDataset:
                 test_path `str`: Path to the test file.
         """
         if DatasetValidator.validate_paths(train_path, test_path):
-            self.train_data: pd.DataFrame = pd.read_csv(train_path)
-            DatasetValidator.validate_data_schema(self.train_data, "train")
+            unvalidated_train_data: pd.DataFrame = pd.read_csv(train_path)
+            self.train_data: pd.DataFrame = DatasetValidator.validate_data_schema(
+                unvalidated_train_data, "train"
+            )
 
-            self.test_data: pd.DataFrame = pd.read_csv(test_path)
-            DatasetValidator.validate_data_schema(self.test_data, "test")
+            unvalidated_test_data: pd.DataFrame = pd.read_csv(test_path)
+            self.test_data: pd.DataFrame = DatasetValidator.validate_data_schema(
+                unvalidated_test_data, "test"
+            )
 
     @classmethod
     def create_from_zip(cls, zip_path: str) -> TitanicDataset:
@@ -63,24 +66,30 @@ class TitanicDataset:
 class DatasetValidator:
     """
     Class with a series of utility functions to validate the existence
-    and correctness of the dataset that is trying to being read.
+    and correctness of the dataset that is trying to be read.
     """
 
     test_schema: pa.DataFrameSchema = pa.DataFrameSchema(
         columns={
-            "PassengerId": pa.Column(int, ),
+            "PassengerId": pa.Column(
+                int,
+            ),
             "Pclass": pa.Column(int, pa.Check.isin([1, 2, 3])),
             "Name": pa.Column(str),
-            "Sex": pa.Column(str, pa.Check.isin(['male', 'female'])),
-            "Age": pa.Column(float, pa.Check.greater_than_or_equal_to(0), nullable=True),
+            "Sex": pa.Column(str, pa.Check.isin(["male", "female"])),
+            "Age": pa.Column(
+                float, pa.Check.greater_than_or_equal_to(0), nullable=True
+            ),
             "SibSp": pa.Column(int, pa.Check.greater_than_or_equal_to(0)),
             "Parch": pa.Column(int, pa.Check.greater_than_or_equal_to(0)),
             "Ticket": pa.Column(str),
-            "Fare": pa.Column(float, pa.Check.greater_than_or_equal_to(0)),
+            "Fare": pa.Column(
+                float, pa.Check.greater_than_or_equal_to(0), nullable=True
+            ),
             "Cabin": pa.Column(str, nullable=True),
-            "Embarked": pa.Column(str, pa.Check.isin(['S', 'C', 'Q'])),
+            "Embarked": pa.Column(str, pa.Check.isin(["S", "C", "Q"]), nullable=True),
         },
-        unique=['PassengerId']
+        unique=["PassengerId"],
     )
     train_schema: pa.DataFrameSchema = test_schema.add_columns(
         {
@@ -90,6 +99,15 @@ class DatasetValidator:
 
     @classmethod
     def validate_paths(cls, train_path: str, test_path: str) -> bool:
+        """ 
+        Utility method to validate the existence of the specify paths for both
+        the training and testing dataset files.
+
+            Parameters:
+                train_path `str`: Path to the csv file containing the training data
+                test_path `str`: Path to the csv file containing the testing data
+
+        """
         if os.path.isfile(train_path):
             if train_path.endswith(".csv"):
                 pass
