@@ -99,7 +99,7 @@ class DatasetValidator:
 
     @classmethod
     def validate_paths(cls, train_path: str, test_path: str) -> bool:
-        """ 
+        """
         Utility method to validate the existence of the specify paths for both
         the training and testing dataset files.
 
@@ -159,11 +159,6 @@ class DatasetValidator:
 
 class DatasetIngestionException(Exception):
     """Exception thrown when there is an error reading the specified data source"""
-
-
-class DatasetSchemaException(Exception):
-    """Exception thrown when the specified dataset does not conform with the expected data schema"""
-
 
 class InvalidOptionException(Exception):
     """Thrown when an unexpected arguments was passed to a function."""
