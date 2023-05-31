@@ -2,3 +2,5 @@ pandas
 pytest
 pandera
 numpy
+pyyaml
+typer

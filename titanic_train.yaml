@@ -1,0 +1,11 @@
+trainer_args:
+  criterion: 'gini'
+  n_estimators: 700
+  min_samples_split: 10
+  min_samples_leaf: 1
+  max_features: 'auto'
+  oob_score: True
+  random_state: 1
+  n_jobs: -1
+base_runs_folder: 'runs'
+data_zip: './data/titanic.zip'

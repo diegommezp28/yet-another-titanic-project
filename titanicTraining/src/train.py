@@ -1,6 +1,7 @@
 from enum import Enum
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
+from typing import Tuple
 
 class TrainerModels:
     RandomForest = RandomForestClassifier
@@ -28,9 +29,9 @@ class Trainer:
         self.model.fit(X, y, *trainer_args, **trainer_kwargs)
         return self.model
     
-    def evaluate(self, X, y) -> dict:
+    def evaluate(self, X, y) -> Tuple[dict, str]:
         y_pred = self.predict(X)
-        return classification_report(y, y_pred, output_dict=True)
+        return classification_report(y, y_pred, output_dict=True), classification_report(y, y_pred)
 
 
     def predict(self, X):
