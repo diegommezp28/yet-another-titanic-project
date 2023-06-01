@@ -5,14 +5,14 @@ from rich import print
 import os
 import yaml
 import pathlib
-from src import TrainModelPipeline
+from pipe import TrainModelPipeline
 from glob import glob
 import re
 import pandas as pd
 
 DEFAULT_CONFIG_FILE_PATH = "./titanic_train.yaml"
 
-app = typer.Typer()
+app = typer.Typer(add_completion=False)
 
 
 @app.command()
@@ -211,6 +211,8 @@ def predict(
             f'\n[bold green]Success![/bold green] Predictions saved at: "{output_path}" '
         )
 
+def main():
+    app()
 
 if __name__ == "__main__":
     app()

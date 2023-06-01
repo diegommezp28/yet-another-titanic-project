@@ -1,6 +1,28 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "titanicTraining"
+name = "titanic"
+version = "0.0.7"
+authors = [{ name = "Diego Gomez", email = "diego_gomezpolo@outlook.com" }]
+description = "Simple ML pipeline implementation for training the titanic dataset from kaggle"
+readme = "README.md"
+requires-python = ">=3.7"
+
+dependencies = [
+    "pandas",
+    "pytest",
+    "pandera",
+    "numpy",
+    "pyyaml",
+    "typer",
+    "rich",
+    "scikit-learn",
+]
+
+[project.scripts]
+titanic = "cli:main"
+
+[project.urls]
+"Homepage" = "https://github.com/diegommezp28/yet-another-titanic-project"
