@@ -126,7 +126,57 @@ kaggle competitions download -c titanic
 
 ## Usage
 
+Since this is made with Typer, you can see all the options by running
 
+```
+titanic --help
+```
+
+There are 3 main commands: `run`, `resume`, `predict`. 
+
+#### run
+
+* All the info in: `titanic run --help`
+
+This is the main command which runs the whole training pipeline. You can see all the command options by running `titanic run --help`.
+The main input (optional and with default path) is the .yaml file which has all the training configs for the model and most important, it has the default route to the .zip file with the titanic dataset, you shall change this route if it does not match the default path. 
+This repo already ships with the `titanic_train.yaml` that the script will look for, you can also specify a custom path with the `--config-file` option. 
+
+```
+titanic run
+```
+Will run the training pipeline. Automatically, it will save checkpoints of each step of the pipeline. The default checkpointing folder is at `titanic_train.yaml` in `base_runs_folder: runs`.
+
+#### resume
+
+* All the info in: `titanic resume --help`
+
+A key feature of the package is the ability to resume the pipeline run from a previously saved checkpoint. You can resume from a .ckpt file by running:
+
+```
+titanic resume --ckpt-file <path_to_file>
+```
+#### predict
+
+* All the info in: `titanic predict --help`
+
+This is the command that lets you run predictions on new data with a previously train pipeline. You do not need to specify the pipeline, by default it will look for the latest evaluation checkpoint inside the `runs` folder. Of course, if you want, you can provide a valid checkpoint using the `--ckpt-file` option and an output path to write the result using the `--output-path` option.
+
+```
+titanic predict <path_to_data>
+```
+
+## Features
+
+Here are a list of features that the `titanic` script has:
+* Running training pipeline from zip data
+* Running training pipeline from train and test csv files
+* Configuring the RandomForest hyperparameters from a .yaml file
+* Automatic checkpoints for each stage of the pipeline (Ingest, Preprocessing, Training, Evaluate)
+* Resuming pipeline from a saved  checkpoint
+* Perform prediction on new data using a previously train model or an Evaluate Checkpoint
+* Perform prediction on preprocessed and feature enriched data
+* Save prediction in an output csv file
 
 
 <!-- LICENSE -->
