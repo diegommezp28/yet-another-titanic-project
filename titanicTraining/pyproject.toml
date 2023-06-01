@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "titanic"
-version = "0.0.7"
+version = "0.0.9"
 authors = [{ name = "Diego Gomez", email = "diego_gomezpolo@outlook.com" }]
 description = "Simple ML pipeline implementation for training the titanic dataset from kaggle"
 readme = "README.md"

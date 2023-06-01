@@ -124,7 +124,7 @@ def resume(
 
 @app.command()
 def predict(
-    data_path: str,
+    data_path: str = typer.Argument("", help="Path to data."),
     processed: bool = typer.Option(
         False,
         help="Whether or nor the data is already processed and with features or is raw data.",
@@ -211,8 +211,10 @@ def predict(
             f'\n[bold green]Success![/bold green] Predictions saved at: "{output_path}" '
         )
 
+
 def main():
     app()
+
 
 if __name__ == "__main__":
     app()
