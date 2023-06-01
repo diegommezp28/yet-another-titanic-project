@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from typing import List
+from sklearn.preprocessing import OneHotEncoder
 
 
 class DataCleaning:
@@ -62,7 +63,7 @@ class FeatureEnricher:
             "Name_Title",
             "Fam_Size",
         ]
-        self.good_cols = {}
+        self.dummies_encoder = OneHotEncoder(handle_unknown="ignore", sparse=False)
 
     def names(self, data: pd.DataFrame) -> pd.DataFrame:
         """
@@ -152,17 +153,19 @@ class FeatureEnricher:
         """
         Converts unique values of certain columns into dummy columns (True, False)
         """
+
+        new_cols = self.dummies_encoder.transform(data[self.columns])
+        data = pd.concat(
+            (
+                data,
+                pd.DataFrame.from_records(
+                    new_cols,
+                    columns=self.dummies_encoder.get_feature_names_out(self.columns),
+                ),
+            ),
+            axis=1,
+        )
         for column in self.columns:
-            data[column] = data[column].astype(str)
-            data_good_cols = [
-                i
-                for i in self.good_cols[column]
-                if i.replace(column + "_", "") in data[column].unique()
-            ]
-            data = pd.concat(
-                (data, pd.get_dummies(data[column], prefix=column)[data_good_cols]),
-                axis=1,
-            )
             del data[column]
         return data
 
@@ -188,12 +191,8 @@ class FeatureEnricher:
         aux_data = self.fam_size(aux_data)
         aux_data = self.tickets(aux_data)
         aux_data = self.cabins(aux_data)
-        for column in self.columns:
-            aux_data[column] = aux_data[column].astype(str)
-            self.good_cols[column] = [
-                column + "_" + i for i in aux_data[column].unique()
-            ]
 
+        self.dummies_encoder.fit(aux_data[self.columns])
         self.fitted = True
 
     def transform(
