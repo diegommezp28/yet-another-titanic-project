@@ -137,8 +137,8 @@ class TestTrainModelPipeline:  # pragma: no cover
         os.mkdir(temp_data_folder)
         temp_train = str(temp_data_folder / "train.csv")
         temp_test = str(temp_data_folder / "test.csv")
-        COMPLIANT_TRAIN.to_csv(temp_train)
-        COMPLIANT_TEST.to_csv(temp_test)
+        COMPLIANT_TRAIN.to_csv(temp_train, index=False)
+        COMPLIANT_TEST.to_csv(temp_test, index=False)
         shutil.make_archive(temp_data_folder, format="zip", root_dir=temp_data_folder)
         zip_file_path = str(tmp_path / "titanic.zip")
 

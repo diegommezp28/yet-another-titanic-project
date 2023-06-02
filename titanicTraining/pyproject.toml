@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "titanic"
-version = "0.0.9"
+version = "0.1.0"
 authors = [{ name = "Diego Gomez", email = "diego_gomezpolo@outlook.com" }]
 description = "Simple ML pipeline implementation for training the titanic dataset from kaggle"
 readme = "README.md"
@@ -23,6 +23,10 @@ dependencies = [
 
 [project.scripts]
 titanic = "cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["pipe*"]
 
 [project.urls]
 "Homepage" = "https://github.com/diegommezp28/yet-another-titanic-project"
