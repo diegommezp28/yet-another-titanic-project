@@ -160,7 +160,7 @@ titanic resume --ckpt-file <path_to_file>
 
 * All the info in: `titanic predict --help`
 
-This is the command that lets you run predictions on new data with a previously train pipeline. You do not need to specify the pipeline, by default it will look for the latest evaluation checkpoint inside the `runs` folder. Of course, if you want, you can provide a valid checkpoint using the `--ckpt-file` option and an output path to write the result using the `--output-path` option.
+This is the command that lets you run predictions on new data with a previously trained pipeline. You do not need to specify the pipeline, by default it will look for the latest evaluation checkpoint inside the `runs` folder. Of course, if you want, you can provide a valid checkpoint using the `--ckpt-file` option and an output path to write the result using the `--output-path` option.
 
 ```
 titanic predict <path_to_data>
@@ -191,7 +191,7 @@ Distributed under the APACHE License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Diego Gómez  - da.gomezp@uniandes.edu.co
+Diego Gómez  - diego_gomezpolo@outlook.com - [LinkedIn](https://www.linkedin.com/in/diegomezp28/)
 
 Project Link: [https://github.com/diegommezp28/yet-another-titanic-project](https://github.com/diegommezp28/yet-another-titanic-project)
 
