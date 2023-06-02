@@ -1,32 +1,14 @@
 # yet-another-titanic-project
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
 
 
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-
-
-<!-- ![descarga](https://github.com/diegommezp28/yet-another-titanic-project/assets/47110686/e1dd81d9-b693-424d-aa34-322738669ec1) -->
 
 <!-- PROJECT LOGO -->
 <br />
@@ -75,13 +57,6 @@ This project implements a simple package for training and evaluating a model for
 https://www.kaggle.com/competitions/titanic/overview
 
 
- <!-- ![image](https://user-images.githubusercontent.com/47110686/140454973-b1c7e6d5-f593-44b9-8c8f-f2ad8fbee495.png)
-
-![image](https://user-images.githubusercontent.com/47110686/140455106-92ebd036-3800-4523-81dd-476ce8daafa4.png)
-
-![image](https://user-images.githubusercontent.com/47110686/140455159-83d70615-09bb-4f05-a3cf-ba389d9afc1e.png) -->
-
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -109,9 +84,9 @@ The whole package is inside the [titanicTraining](https://github.com/diegommezp2
 pip install titanicTraining
 ```
 
-This will install in your environment an script named `titanic`, which is a cli app made with [Typer](https://typer.tiangolo.com/). 
+This will install in your environment an script named `titanic`, which is a CLI app made with [Typer](https://typer.tiangolo.com/). 
 
-This package DOES NOT include the dataset, for that you can dowload it from [here](https://www.kaggle.com/competitions/titanic/overview) or, better yet, use the [kaggle](https://pypi.org/project/kaggle/) package to download it. For that, run:
+This package DOES NOT include the dataset, you can dowload it from [here](https://www.kaggle.com/competitions/titanic/overview) or, better yet, use the [kaggle](https://pypi.org/project/kaggle/) package to download it. For that, run:
 
 ```
 pip install kaggle
@@ -139,8 +114,8 @@ There are 3 main commands: `run`, `resume`, `predict`.
 * All the info in: `titanic run --help`
 
 This is the main command which runs the whole training pipeline. You can see all the command options by running `titanic run --help`.
-The main input (optional and with default path) is the .yaml file which has all the training configs for the model and most important, it has the default route to the .zip file with the titanic dataset, you shall change this route if it does not match the default path. 
-This repo already ships with the `titanic_train.yaml` that the script will look for, you can also specify a custom path with the `--config-file` option. 
+The main input (optional, with a default path) is the .yaml file which has all the training configs for the model and most important, it has the default route to the .zip file with the titanic dataset, you shall change this route if your local dataset does not match the default path. 
+This repo already ships with the `titanic_train.yaml` config file that the script will look for, you can also specify a custom config file path with the `--config-file` option. 
 
 ```
 titanic run
