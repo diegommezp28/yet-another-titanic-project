@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 import shutil
-from titanicTraining.src import TitanicDataset, DatasetValidator, DatasetIngestionException, InvalidOptionException
+from pipe import TitanicDataset, DatasetValidator, DatasetIngestionException, InvalidOptionException
 
 TRAIN_COLS = ['PassengerId','Survived','Pclass','Name','Sex','Age','SibSp','Parch','Ticket','Fare','Cabin','Embarked'] # pragma: no cover
 TEST_COLS = ['PassengerId','Pclass','Name','Sex','Age','SibSp','Parch','Ticket','Fare','Cabin','Embarked'] # pragma: no cover
