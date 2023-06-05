@@ -97,7 +97,7 @@ kaggle competitions download -c titanic
 ```
 
 
-*Important:** Remember that in order to use the kaggle package you will need to configure your kaggle .json credentials locally, see [here](https://github.com/Kaggle/kaggle-api#api-credentials) an explanation. 
+**Important:** Remember that in order to use the kaggle package you will need to configure your kaggle.json credentials locally, see [here](https://github.com/Kaggle/kaggle-api#api-credentials) an explanation. 
 
 ## Usage
 
@@ -143,7 +143,7 @@ titanic predict <path_to_data>
 
 ## Docker
 
-There is already a Dockerfile in this repo that will configure everything you need to run this code, including downloading the data and setting up a volume for such data folder. Just take into account when building the image that docker will look for the `.kaggle.json` file in the main folder. You can use the `sample.kaggle.json`, rename it and fill the neccesary information inside of it, or just download it from kaggle following the instructions from [here](https://github.com/Kaggle/kaggle-api#api-credentials). The entrypoint of the Docker image will already be the `titanic` script, so you just have to add the relevant options and arguments. 
+There is already a Dockerfile in this repo that will configure everything you need to run this code, including downloading the data and setting up a volume for such data folder. Just take into account when building the image that docker will look for the `kaggle.json` file in the main folder. You can use the `sample.kaggle.json`, rename it and fill the neccesary information inside of it, or just download it from kaggle following the instructions from [here](https://github.com/Kaggle/kaggle-api#api-credentials). The entrypoint of the Docker image will already be the `titanic` script, so you just have to add the relevant options and arguments. 
 
 **Tip:** Run the container with the `-t` flag to have a colored output in the console. i.e.:
 
