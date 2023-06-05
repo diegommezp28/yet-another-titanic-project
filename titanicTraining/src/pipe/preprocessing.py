@@ -63,7 +63,9 @@ class FeatureEnricher:
             "Name_Title",
             "Fam_Size",
         ]
-        self.dummies_encoder = OneHotEncoder(handle_unknown="ignore", sparse=False)
+        self.dummies_encoder = OneHotEncoder(
+            handle_unknown="ignore", sparse_output=False
+        )
 
     def names(self, data: pd.DataFrame) -> pd.DataFrame:
         """

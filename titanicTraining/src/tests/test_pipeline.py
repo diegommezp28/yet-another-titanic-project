@@ -1,4 +1,4 @@
-from titanicTraining.src import TrainModelPipeline
+from pipe import TrainModelPipeline
 import pandas as pd
 import numpy as np
 import os

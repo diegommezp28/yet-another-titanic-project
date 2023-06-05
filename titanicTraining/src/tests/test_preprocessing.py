@@ -1,4 +1,4 @@
-from titanicTraining.src import DataCleaning, FeatureEnricher
+from pipe import DataCleaning, FeatureEnricher
 import pandas as pd
 import numpy as np
 
