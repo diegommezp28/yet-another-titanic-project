@@ -1,6 +1,4 @@
 import typer
-from typing import Optional
-from typing_extensions import Annotated
 from rich import print
 import os
 import yaml
